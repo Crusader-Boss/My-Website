@@ -3,11 +3,12 @@
 .headerog {
   width: 100vw;
   height: 50px;
-  background: #1d2d44;
+  background: #f5e8c7;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 5px 0px 5px 0px;
+  border-bottom: 2px solid #d35400;
 }
 .logo-container {
   margin-left: -60px;
@@ -15,7 +16,7 @@
   font-size: 1.5em;
   text-decoration: underline;
   font-weight: bold;
-  color: gold;
+  color: #d35400;
 }
 
 nav {
@@ -35,13 +36,32 @@ nav a {
   display: inline-block;
   margin: 0 20px;
   font-size: 1.5em;
-  color: #748cab;
+  color: #586e75;
   text-decoration: none;
   z-index: 1;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #d35400;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
 }
 
 nav a:hover {
-  color: #f0ebd8;
+  color: #d35400;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .search-container {
@@ -50,13 +70,13 @@ nav a:hover {
 }
 
 .search-input {
-  border: none;
+  border: 1px solid #b58900;
   border-radius: 10px;
   width: 180px;
   padding: 8px;
-  background-color: #3e5c76;
-  caret-color: #ff79c6;
-  color: #f8f8f2;
+  background-color: #fdf6e3;
+  caret-color: #d35400;
+  color: #586e75;
 }
 
 .search-button {
@@ -64,9 +84,14 @@ nav a:hover {
   border: none;
   border-radius: 12px;
   font-family: "Lobster Two";
-  background-color: #748cab;
-  color: #f0ebd8;
+  background-color: #d35400;
+  color: #fdf6e3;
   padding: 7px 15px;
   margin-left: 15px;
   margin-right: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #b58900;
 }

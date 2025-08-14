@@ -17,17 +17,106 @@
       <div class="container">
         <h1 class="title">About Me</h1>
         <div class="content">
-          <img class="profile-picture" src="Images/pfp.webp" alt="Kshitij_Arya" />
-          <p class="description">
-            Kshitij Arya is a student,Developer currently studying
-            biotechnology. He is very enthusiastic about tech. He is also a productivity nerd. He loves to go for
-            running or long walks in his free time,and is also intrested in
-            photgraphy and cinematography. Kshitij has this weird thing where
-            ideas, thoughts and opinions popup in his head 24/7. So,he decided to put those ideas on
-            web page and show them to everyone. Hope you enjoy them.
-          </p>
+          <div class="profile-row">
+            <img class="profile-picture" src="Images/pfp.webp" alt="Kshitij_Arya" />
+            <div class="desc-wrap">
+              <p class="description">
+                Kshitij Arya is a student,Developer currently studying
+                biotechnology. He is very enthusiastic about tech. He is also a productivity nerd. He loves to go for
+                running or long walks in his free time,and is also intrested in
+                photgraphy and cinematography. Kshitij has this weird thing where
+                ideas, thoughts and opinions popup in his head 24/7. So,he decided to put those ideas on
+                web page and show them to everyone. Hope you enjoy them.
+              </p>
+            </div>
+          </div>
+
+          <!-- Extra about sections: bio, skills, stats, timeline, projects, gallery, testimonials, resume CTA -->
+          <section class="hero-bio" aria-labelledby="bio-heading">
+            <h2 id="bio-heading">Hi — I'm Kshitij</h2>
+            <p class="lead">Developer &amp; biotechnology student. I build things that blend code and curiosity. I love photography, running, and exploring new ideas.</p>
+          </section>
+
+          <section class="skills" aria-labelledby="skills-heading">
+            <h3 id="skills-heading">Skills</h3>
+            <div class="skill-list">
+              <div class="skill">
+                <div class="skill-name">Web Development</div>
+                <div class="skill-bar" data-percent="90"><span class="skill-fill"></span></div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-bar" data-percent="85"><span class="skill-fill"></span></div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">Design &amp; UX</div>
+                <div class="skill-bar" data-percent="72"><span class="skill-fill"></span></div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">Photography</div>
+                <div class="skill-bar" data-percent="66"><span class="skill-fill"></span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="stats" aria-label="Key statistics">
+            <div class="stat"><div class="stat-value" data-target="24">0</div><div class="stat-label">Projects</div></div>
+            <div class="stat"><div class="stat-value" data-target="120">0</div><div class="stat-label">Blog posts</div></div>
+            <div class="stat"><div class="stat-value" data-target="3">0</div><div class="stat-label">Years learning</div></div>
+            <div class="stat"><div class="stat-value" data-target="5000">0</div><div class="stat-label">Hours</div></div>
+          </section>
+
+          <section class="timeline" aria-labelledby="timeline-heading">
+            <h3 id="timeline-heading">Timeline</h3>
+            <ol class="timeline-list">
+              <li><time>2023</time> Began studying Biotechnology Started building projects &amp; blog.</li>
+              <li><time>2022</time> First public project and portfolio.</li>
+              <li><time>2021</time> Began studying learning web dev.</li>
+            </ol>
+          </section>
+
+          <section class="projects" aria-labelledby="projects-heading">
+            <h3 id="projects-heading">Featured Projects</h3>
+            <div class="projects-grid">
+              <article class="project-card">
+                <img src="Images/dummy.webp" alt="Project thumbnail" />
+                <h4>Portfolio</h4>
+                <p>Static portfolio site with micro-interactions.</p>
+                <a class="btn" href="#">View</a>
+              </article>
+              <article class="project-card">
+                <img src="Images/dummy.webp" alt="Project thumbnail" />
+                <h4>Task Tracker</h4>
+                <p>A lightweight todo app with local storage.</p>
+                <a class="btn" href="#">View</a>
+              </article>
+            </div>
+          </section>
+
+          <section class="gallery" aria-labelledby="gallery-heading">
+            <h3 id="gallery-heading">Photography</h3>
+            <div class="gallery-grid">
+              <img src="Images/photo1.webp" alt="photo 1" class="gallery-item" />
+              <img src="Images/photo2.webp" alt="photo 2" class="gallery-item" />
+              <img src="Images/photo3.webp" alt="photo 3" class="gallery-item" />
+            </div>
+          </section>
+
+          <section class="testimonials" aria-labelledby="testimonials-heading">
+            <h3 id="testimonials-heading">Testimonials</h3>
+            <div class="testimonials-wrap">
+              <blockquote class="testimonial">"Kshitij is a curious builder who ships thoughtful work."</blockquote>
+              <blockquote class="testimonial">"Great collaborator and creative thinker."</blockquote>
+            </div>
+          </section>
+
+          <section class="cta-resume">
+            <a class="btn-primary" href="#" aria-label="Download resume">Download Resume</a>
+            <a class="btn-secondary" href="contact.html">Contact me</a>
+          </section>
+
+        </div>
       </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.7.0.min.js"
