@@ -39,19 +39,12 @@ $(document).ready(function () {
     });
   }
 
-  // gallery lightbox (simple)
+  // gallery lightbox (disabled)
+  // We intentionally disable the lightbox for now so clicks on the photography
+  // thumbnails do nothing. We'll re-enable/design this later.
   function setupGallery(){
-    const grid = document.querySelector('.gallery-grid');
-    if (!grid) return;
-    grid.addEventListener('click', function(e){
-      const img = e.target.closest('img');
-      if (!img) return;
-      const overlay = document.createElement('div');
-      overlay.className = 'lightbox-overlay';
-      overlay.innerHTML = '<img src="'+img.src+'" alt="" class="lightbox-img">';
-      overlay.addEventListener('click', function(){ overlay.remove(); });
-      document.body.appendChild(overlay);
-    });
+    // no-op intentionally: gallery click behaviour disabled
+    return;
   }
 
   // testimonials simple rotator
