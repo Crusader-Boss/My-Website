@@ -31,8 +31,9 @@ export default function About(){
 
       <section className="card">
         <h1 id="about">About Me</h1>
-        <p>I’m a student at Haldia Institute of Technology, West Bengal, studying biotechnology. I’m a tech nerd who loves electronics and enjoys coding as a hobby.</p>
-        <p>I know Python and I’m learning more every day by building web experiments and small side projects. My goal is to explore the intersection of software, hardware, and science while sharing what I discover.</p>
+        <p>I’m a second-year Biotechnology Engineering student at Haldia Institute of Technology, where I combine embedded systems, robotics, and lab science into practical projects.</p>
+        <p>I’m not a full-time web developer — I’m a hybrid tech student who builds with Python, C/C++, Arduino, ESP modules, and bioelectronics. Coding is my hobby, electronics are my playground, and I’m focused on the space between biotech and hardware.</p>
+        <p>My portfolio is meant to show the types of work I do as I grow: sample articles, project experiments, and a blog platform I’m building to document what’s next.</p>
       </section>
 
       <section className="card skills">

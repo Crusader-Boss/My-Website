@@ -42,36 +42,36 @@ export default function Home(){
       <Particles count={60} />
       <div className="card card-animate">
         <h1>Hi, I’m Kshitij Arya</h1>
-        <p className="hero-subtitle">Biotechnology student • Tech nerd • Hobbyist coder</p>
+        <p className="hero-subtitle">Biotechnology Engineering student • Embedded systems & robotics enthusiast • Hobbyist coder</p>
         <div className="social">
           <a href="https://twitter.com/Arya_Kshitij69" target="_blank" rel="noreferrer"><img src="/images/twitter.svg" alt="Twitter" /></a>
           <a href="https://github.com/Crusader-Boss" target="_blank" rel="noreferrer"><img src="/images/github.svg" alt="Github" /></a>
           <a href="https://www.youtube.com/@Kshitij_Arya69" target="_blank" rel="noreferrer"><img src="/images/youtube.svg" alt="YouTube" /></a>
           <a href="https://www.linkedin.com/in/kshitijarya06/" target="_blank" rel="noreferrer"><img src="/images/linkedin-svgrepo-com.svg" alt="LinkedIn" /></a>
         </div>
-        <p>I’m a student at Haldia Institute of Technology, West Bengal, studying biotechnology. I love electronics and coding is my hobby—Python, web experiments, and building small interactive projects keep me curious.</p>
+        <p>I’m a student at Haldia Institute of Technology, West Bengal, studying biotechnology. I love electronics, embedded systems, and building practical projects with Python and hardware.</p>
       </div>
       <div className="card card-animate">
         <h2>Featured Work</h2>
         <div className="work-grid">
           <article className="work-item">
-            <div className="work-icon">💻</div>
-            <h3>Portfolio Website</h3>
-            <p>A polished personal site built for speed, readability, and a memorable first impression.</p>
+            <div className="work-icon">⚙️</div>
+            <h3>Bioelectronics & Embedded Systems</h3>
+            <p>Embedded and robotics experiments using Arduino, ESP32, sensors, and motor control logic.</p>
             <a href="/about_me" className="work-link">View Details →</a>
           </article>
 
           <article className="work-item">
             <div className="work-icon">📝</div>
-            <h3>Articles</h3>
-            <p>Practical notes on web development, component design, and the craft of building better interfaces.</p>
+            <h3>Blog Platform</h3>
+            <p>Building my own platform to share projects, research notes, and hybrid tech ideas.</p>
             <a href="/blog" className="work-link">Read Articles →</a>
           </article>
 
           <article className="work-item">
-            <div className="work-icon">📸</div>
-            <h3>Creative Work</h3>
-            <p>Side projects, visual experiments, and the occasional photo that makes me stop scrolling.</p>
+            <div className="work-icon">🔬</div>
+            <h3>Biotech & Hardware</h3>
+            <p>Work at the intersection of biotechnology, hardware, and software with hands-on lab and electronics experience.</p>
             <a href="/about_me#gallery" className="work-link">View Gallery →</a>
           </article>
         </div>

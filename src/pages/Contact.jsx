@@ -41,7 +41,7 @@ export default function Contact(){
       <Particles count={28} color={'rgba(25,118,210,0.06)'} lineColor={'rgba(25,118,210,0.02)'} />
       <div className="box centered">
         <h1 className="contact-title">Contact Me</h1>
-        <p className="contact-copy">Have a project idea, question, or collaboration request? Send a message and I’ll get back to you soon.</p>
+        <p className="contact-copy">Interested in biotech, embedded systems, robotics, or a blog collaboration? Drop a line and I’ll respond as soon as I can.</p>
         <Doodles />
         <form className="form" onSubmit={onSubmit} noValidate>
           <div className={`form-group ${status === 'error' ? 'error' : ''}`}>
