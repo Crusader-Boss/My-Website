@@ -1,0 +1,6 @@
+/* Blue color-scheme base styles */
+:root{ --bg:#eaf6ff; --card:#ffffff; --accent:#1976d2; --accent-2:#63a4ff; --text:#0b3a66; }
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:var(--bg)}
+main{padding:2rem}

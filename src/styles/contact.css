@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+
+body { background-color: #eaf6ff; color:#274c77; font-family:Inter, sans-serif }
+
+.container { width:100%; margin:0; padding:1.5rem; padding-top: calc(50px + 1.5rem); box-sizing: border-box }
+.main { display:flex; justify-content:center; align-items:flex-start; min-height: calc(100vh - 50px - 3rem) }
+.box { background: rgba(225,243,255,0.95); padding:2.25rem 1.75rem; border-radius:10px; width:100%; max-width:560px; border:1px solid rgba(25,118,210,0.08) }
+.contact-title { text-align:center; color:var(--accent); font-family:"Playfair Display", serif; font-weight:600 }
+.form { display:flex; flex-direction:column; gap:1rem }
+.fname, .femail, .fmessage { width:100%; padding:12px 16px; border:2px solid var(--accent-2); border-radius:8px; background:#f0fbff }
+.submitbtn { padding:14px 28px; border-radius:8px; background: linear-gradient(135deg,var(--accent),var(--accent-2)); color:#ffffff; border:none }
+
+/* center form on page when using contact-page */
+.container.contact-page { display:flex; align-items:center; justify-content:center; min-height: calc(100vh - 80px) }
+.box.centered { position:relative; margin: 0 auto }
+
+/* doodles */
+.doodles-wrap { position:absolute; inset:0; pointer-events:none; z-index:0 }
+.doodle { position:absolute; transform-origin:center; opacity:0.95; animation: floatY 6s ease-in-out infinite }
+@keyframes floatY { 0%{ transform: translateY(0) } 50%{ transform: translateY(-12px) } 100%{ transform: translateY(0) } }
+
+/* ensure the form sits above doodles */
+.box.centered .form, .box.centered .contact-title { position:relative; z-index:2 }
+
+/* remove old bubble container usage */
+.bubbles { display:none }
+
+@media (max-width:640px){ .container{padding:1rem; padding-top: calc(50px + 1rem)} .box{padding:1.25rem} .doodle{display:none} }
