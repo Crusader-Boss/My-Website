@@ -25,7 +25,7 @@ export default function Blog(){
   return (
     <section className="container">
       <h1>Articles</h1>
-      <p className="blog-intro">Thoughtful notes on web development, accessibility, and the practical side of building modern user experiences.</p>
+      <p className="blog-intro">These are just sample entries for now — I’m building my own blog platform and more real posts are coming soon.</p>
       {q && <p>Showing results for "{q}"</p>}
       {posts.length === 0 && <p>No posts found. More articles are coming soon.</p>}
       {posts.map(p => (

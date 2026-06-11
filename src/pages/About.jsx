@@ -31,8 +31,8 @@ export default function About(){
 
       <section className="card">
         <h1 id="about">About Me</h1>
-        <p>I’m a web developer focused on building responsive, easy-to-use interfaces with React, HTML, and CSS. I enjoy turning ideas into fast, polished products that feel reliable on desktop and mobile.</p>
-        <p>As a student and creator, I’m always learning new tools, refining my design sense, and finding better ways to make code readable for whoever comes next.</p>
+        <p>I’m a student at Haldia Institute of Technology, West Bengal, studying biotechnology. I’m a tech nerd who loves electronics and enjoys coding as a hobby.</p>
+        <p>I know Python and I’m learning more every day by building web experiments and small side projects. My goal is to explore the intersection of software, hardware, and science while sharing what I discover.</p>
       </section>
 
       <section className="card skills">

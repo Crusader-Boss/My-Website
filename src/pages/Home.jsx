@@ -42,14 +42,14 @@ export default function Home(){
       <Particles count={60} />
       <div className="card card-animate">
         <h1>Hi, I’m Kshitij Arya</h1>
-        <p className="hero-subtitle">Developer • Creator • Student</p>
+        <p className="hero-subtitle">Biotechnology student • Tech nerd • Hobbyist coder</p>
         <div className="social">
           <a href="https://twitter.com/Arya_Kshitij69" target="_blank" rel="noreferrer"><img src="/images/twitter.svg" alt="Twitter" /></a>
           <a href="https://github.com/Crusader-Boss" target="_blank" rel="noreferrer"><img src="/images/github.svg" alt="Github" /></a>
           <a href="https://www.youtube.com/@Kshitij_Arya69" target="_blank" rel="noreferrer"><img src="/images/youtube.svg" alt="YouTube" /></a>
           <a href="https://www.linkedin.com/in/kshitijarya06/" target="_blank" rel="noreferrer"><img src="/images/linkedin-svgrepo-com.svg" alt="LinkedIn" /></a>
         </div>
-        <p>I build clean, interactive web experiences with React and modern front-end tools. I’m focused on thoughtful design, usability, and making code easier to maintain than it has any right to be.</p>
+        <p>I’m a student at Haldia Institute of Technology, West Bengal, studying biotechnology. I love electronics and coding is my hobby—Python, web experiments, and building small interactive projects keep me curious.</p>
       </div>
       <div className="card card-animate">
         <h2>Featured Work</h2>
