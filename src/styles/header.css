@@ -233,37 +233,88 @@ nav a.active {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-	.headerog {
-		padding: 5px 10px;
-	}
+  .headerog {
+    padding: 5px 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
   
-	.logo-container {
-		margin-left: 0;
-		font-size: 1.2em;
-	}
+  .logo-container {
+    margin-left: 0;
+    font-size: 1.2em;
+    min-height: 44px;
+  }
   
-	nav {
-		width: auto;
-		margin: 0 10px;
-	}
+  nav {
+    width: auto;
+    margin: 0 10px;
+    gap: 4px;
+  }
   
-	nav a {
-		margin: 0 8px;
-		font-size: 0.9em;
-		padding: 6px 8px;
-	}
+  nav a {
+    margin: 0 4px;
+    font-size: 0.9em;
+    padding: 6px 8px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
   
-	.search-container {
-		margin-right: 0;
-	}
+  .search-container {
+    margin-right: 0;
+  }
   
-	.search-input {
-		width: 120px;
-	}
+  .search-input {
+    width: 120px;
+  }
   
-	.search-input:focus {
-		width: 140px;
-	}
+  .search-input:focus {
+    width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerog {
+    height: auto;
+    padding: 8px 5px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .logo-container {
+    font-size: 1.1em;
+    margin-left: 0;
+  }
+  
+  nav {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 6px;
+    gap: 0;
+  }
+  
+  nav a {
+    margin: 0;
+    font-size: 0.85em;
+    padding: 8px 6px;
+    flex: 1;
+    text-align: center;
+    min-height: 40px;
+  }
+  
+  .search-container {
+    width: 100%;
+  }
+  
+  .search-input {
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .search-input:focus {
+    width: 100%;
+  }
 }
 
 /* ripple keyframes used by the logo click effect */

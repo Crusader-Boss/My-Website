@@ -2,8 +2,11 @@
 :root{ --bg:#eaf6ff; --card:#ffffff; --accent:#1976d2; --accent-2:#63a4ff; --text:#0b3a66; }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
-body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:var(--bg)}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:var(--bg);font-size:16px}
 main{padding:2rem}
+
+@media (max-width:768px){ body{font-size:15px} main{padding:1rem} }
+@media (max-width:480px){ body{font-size:14px} main{padding:0.75rem} }
 
 /* Global animations */
 @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
