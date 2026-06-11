@@ -38,7 +38,7 @@ export default function Contact(){
 
   return (
     <main className="container contact-page">
-      <Particles count={28} color={'rgba(25,118,210,0.06)'} lineColor={'rgba(25,118,210,0.02)'} />
+      <Particles count={40} mode="bounce" color={'rgba(25,118,210,0.25)'} lineColor={'rgba(25,118,210,0.08)'} />
       <div className="box centered">
         <h1 className="contact-title">Contact Me</h1>
         <p className="contact-copy">Interested in biotech, embedded systems, robotics, or a blog collaboration? Drop a line and I’ll respond as soon as I can.</p>

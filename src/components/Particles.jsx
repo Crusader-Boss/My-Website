@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 
 // Canvas-based particle network (lightweight)
-export default function Particles({ count = 60, color = 'rgba(25,118,210,0.9)', lineColor = 'rgba(25,118,210,0.12)' }){
+export default function Particles({ count = 60, mode = 'network', color = 'rgba(25,118,210,0.9)', lineColor = 'rgba(25,118,210,0.12)' }){
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -13,6 +13,7 @@ export default function Particles({ count = 60, color = 'rgba(25,118,210,0.9)', 
     let width = 0
     let height = 0
     let animationId = null
+    let time = 0
 
     function resize(){
       dpr = window.devicePixelRatio || 1
@@ -28,27 +29,81 @@ export default function Particles({ count = 60, color = 'rgba(25,118,210,0.9)', 
     function initParticles(){
       particles.length = 0
       for (let i = 0; i < count; i++){
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.6,
-          vy: (Math.random() - 0.5) * 0.6,
-          r: Math.random() * 2 + 1
-        })
+        if (mode === 'balloon'){
+          particles.push({
+            x: Math.random() * width,
+            y: height + Math.random() * 50,
+            vx: (Math.random() - 0.5) * 0.15,
+            vy: -0.3 - Math.random() * 0.2,
+            r: Math.random() * 2 + 1,
+            wobblePhase: Math.random() * Math.PI * 2
+          })
+        } else if (mode === 'bounce'){
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2,
+            r: Math.random() * 3 + 2,
+            gravity: 0.15
+          })
+        } else {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.6,
+            vy: (Math.random() - 0.5) * 0.6,
+            r: Math.random() * 2 + 1
+          })
+        }
       }
     }
 
     function step(){
       ctx.clearRect(0,0,width,height)
+      time += 1
+      
       // move and draw
       for (let i = 0; i < particles.length; i++){
         const p = particles[i]
-        p.x += p.vx
-        p.y += p.vy
-        if (p.x < -10) p.x = width + 10
-        if (p.x > width + 10) p.x = -10
-        if (p.y < -10) p.y = height + 10
-        if (p.y > height + 10) p.y = -10
+        
+        if (mode === 'balloon'){
+          p.y += p.vy
+          p.wobblePhase += 0.02
+          p.vx = Math.sin(p.wobblePhase) * 0.1
+          p.x += p.vx
+          
+          if (p.x < -10) p.x = width + 10
+          if (p.x > width + 10) p.x = -10
+          if (p.y < -50) {
+            p.y = height + 10
+            p.wobblePhase = Math.random() * Math.PI * 2
+          }
+        } else if (mode === 'bounce'){
+          // apply gravity
+          p.vy += p.gravity
+          
+          // move
+          p.x += p.vx
+          p.y += p.vy
+          
+          // bounce off walls
+          if (p.x - p.r < 0) { p.x = p.r; p.vx *= -0.9 }
+          if (p.x + p.r > width) { p.x = width - p.r; p.vx *= -0.9 }
+          if (p.y - p.r < 0) { p.y = p.r; p.vy *= -0.9 }
+          if (p.y + p.r > height) { p.y = height - p.r; p.vy *= -0.9 }
+          
+          // friction/drag
+          p.vx *= 0.995
+          p.vy *= 0.995
+        } else {
+          p.x += p.vx
+          p.y += p.vy
+          if (p.x < -10) p.x = width + 10
+          if (p.x > width + 10) p.x = -10
+          if (p.y < -10) p.y = height + 10
+          if (p.y > height + 10) p.y = -10
+        }
 
         ctx.beginPath()
         ctx.fillStyle = color
@@ -98,7 +153,8 @@ export default function Particles({ count = 60, color = 'rgba(25,118,210,0.9)', 
       window.removeEventListener('resize', handleResize)
       if (animationId) cancelAnimationFrame(animationId)
     }
-  }, [count, color, lineColor])
+  }, [count, mode, color, lineColor])
+
 
   return (
     <div className="canvas-particles" style={{position:'absolute', inset:0, pointerEvents:'none', zIndex:-1}}>
