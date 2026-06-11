@@ -58,6 +58,7 @@ export default function About(){
 
       <section className="card gallery" id="gallery">
         <h2>Gallery</h2>
+        <p>I like to capture the moment between moments — a hobbyist photographer always looking for the small details that tell a bigger story.</p>
         <div className="gallery-grid">
           {gallery.map((src, i) => (
             <button key={src} className="gallery-thumb" onClick={() => openLightbox(i)} aria-label={`Open image ${i+1}`}>
