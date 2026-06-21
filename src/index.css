@@ -1,8 +1,8 @@
-/* Blue color-scheme base styles */
-:root{ --bg:#eaf6ff; --card:#ffffff; --accent:#1976d2; --accent-2:#63a4ff; --text:#0b3a66; }
+/* Bold playful color palette - warm sunset vibes */
+:root{ --bg:#1a1410; --card:#2a2015; --accent:#FF6B7A; --accent-2:#FFB84D; --text:#ffffff; --highlight:#FF9F5A; }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
-body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:var(--bg);font-size:16px}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:var(--bg);font-size:16px;background-image:radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(57, 255, 20, 0.05) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(106, 13, 173, 0.08) 0%, transparent 50%);background-attachment:fixed}
 main{padding:2rem}
 
 @media (max-width:768px){ body{font-size:15px} main{padding:1rem} }
