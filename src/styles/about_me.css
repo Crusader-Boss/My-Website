@@ -2,8 +2,9 @@
 
 :root { --accent: #FF6B7A; --accent-2: #FFB84D; --card-bg: rgba(255, 107, 122, 0.1); --card-weak-bg: rgba(255, 184, 77, 0.08); --card-border: rgba(255, 107, 122, 0.3); --card-strong-border: rgba(255, 184, 77, 0.2); --muted-text: #ffffff; }
 
-.body { background-color: #1a1410; color: #ffffff; font-family: "Inter", sans-serif; margin:0; padding:0 }
-.main {
+/* Apply to real body/main elements (was .body/.main causing mismatches) */
+body { background-color: #1a1410; color: #ffffff; font-family: "Inter", sans-serif; margin:0; padding:0 }
+main.about {
   padding: 2.5rem 3rem;
   overflow-x: hidden;
   background: linear-gradient(135deg, #1a1410 0%, #2a2015 25%, #1f1612 50%, #2d1f18 75%, #1a1410 100%);
@@ -16,29 +17,60 @@
   background-size: 100% 100%, 150% 150%, 180% 180%, 100% 100%;
 }
 .container { max-width: 1100px; margin: 0 auto; background: transparent !important; padding: 1.25rem 1.5rem; border-radius: 0 !important }
-.content > section { background: rgba(255, 107, 122, 0.08); box-shadow: 0 0 30px rgba(255, 107, 122, 0.1); border-radius: 14px; border: 2px solid rgba(255, 107, 122, 0.3); margin-bottom: 1.5rem }
-.title { text-align:center; color:var(--accent); margin-bottom:2rem; font-family: "Playfair Display", serif; font-weight:900; font-size:3rem; text-shadow: 0 0 20px rgba(255, 107, 122, 0.2); }
+
+/* Cards: match About.jsx .card sections and add entrance animation */
+main.about .card {
+  background: rgba(255, 107, 122, 0.04);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 107, 122, 0.08);
+  margin-bottom: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+/* Stagger the cards for nicer feel */
+main.about .card:nth-of-type(1){ animation-delay: 0.05s }
+main.about .card:nth-of-type(2){ animation-delay: 0.15s }
+main.about .card:nth-of-type(3){ animation-delay: 0.25s }
+
+/* Heading styles */
+main.about h1#about { text-align:center; color:var(--accent); margin-bottom:1rem; font-family: "Playfair Display", serif; font-weight:700; font-size:2.4rem; text-shadow: 0 0 12px rgba(255, 107, 122, 0.12); }
+main.about h2 { color: var(--accent); margin-bottom:0.75rem; font-family: "Playfair Display", serif; font-weight:700 }
+
+@keyframes fadeInUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
 
 @media (max-width:768px){
   .container{ padding:1rem 1.5rem }
-  .title{ font-size:2.2rem; margin-bottom:1.5rem }
-  .skills-section{ width:95% }
+  main.about h1#about{ font-size:2rem; margin-bottom:1rem }
   .gallery-grid{ gap:8px }
   .gallery-thumb img{ border-radius:6px }
 }
 
 @media (max-width:480px){
   .container{ padding:1rem }
-  .title{ font-size:1.8rem; margin-bottom:1rem }
-  .skills-section{ width:100% }
+  main.about h1#about{ font-size:1.6rem; margin-bottom:0.75rem }
   .gallery-grid{ grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) }
   .gallery-thumb{ min-height: 100px }
   .lightbox-prev, .lightbox-next{ padding:8px 12px; font-size:1.2rem }
 }
+
+/* Profile */
 .profile-row { display:flex; align-items:center; gap:1rem }
 .profile-picture { width:140px; height:140px; border-radius:50%; border:4px solid var(--accent); box-shadow: 0 0 30px rgba(255, 107, 122, 0.4); }
 .description { line-height:1.7; color:#ffffff; font-size:1.05rem; }
-.skills-section{ width:70%; margin:2.5rem auto 2rem auto }
+
+/* Skills: match About.jsx structure */
+.skills { display:block }
+.skill { display:flex; align-items:center; gap:1rem; margin-bottom:0.75rem }
+.skill-title { width:120px; font-weight:700; color:#fff }
+.skill-bar { flex:1; background: rgba(255,255,255,0.04); border-radius:999px; padding:6px; height:14px; display:flex; align-items:center }
+.skill-bar-fill { width:0; height:100%; border-radius:999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 1s cubic-bezier(0.2,0.9,0.2,1); }
+
+/* When JS sets inline width to data-percent, transition animates it */
+
 .stat { background: var(--card-weak-bg); padding:1.25rem 1rem; border-radius:16px; border: 2px solid rgba(255, 107, 122, 0.2); font-weight:700; color: var(--accent); }
 .gallery-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); gap:0.6rem }
 
@@ -62,4 +94,4 @@
 
 @media (max-width:600px){ .lightbox-prev, .lightbox-next { display:none } }
 
-@media (max-width:700px){ .container{padding:1rem 2rem} .title{font-size:2rem} }
+@media (max-width:700px){ .container{padding:1rem 2rem} main.about h1#about{font-size:2rem} }
