@@ -2,10 +2,9 @@
 
 :root { --accent: #FF6B7A; --accent-2: #FFB84D; --card-bg: rgba(255, 107, 122, 0.1); --card-weak-bg: rgba(255, 184, 77, 0.08); --card-border: rgba(255, 107, 122, 0.3); --card-strong-border: rgba(255, 184, 77, 0.2); --muted-text: #ffffff; }
 
-/* Apply to real body/main elements (was .body/.main causing mismatches) */
 body { background-color: #1a1410; color: #ffffff; font-family: "Inter", sans-serif; margin:0; padding:0 }
 main.about {
-  padding: 2.5rem 3rem;
+  padding: clamp(1rem, 4vw, 2rem) var(--page-gutter) 2.5rem;
   overflow-x: hidden;
   background: linear-gradient(135deg, #1a1410 0%, #2a2015 25%, #1f1612 50%, #2d1f18 75%, #1a1410 100%);
   background-attachment: fixed;
@@ -16,42 +15,39 @@ main.about {
     linear-gradient(135deg, #1a1410 0%, #2a2015 25%, #1f1612 50%, #2d1f18 75%, #1a1410 100%);
   background-size: 100% 100%, 150% 150%, 180% 180%, 100% 100%;
 }
-.container { max-width: 1100px; margin: 0 auto; background: transparent !important; padding: 1.25rem 1.5rem; border-radius: 0 !important }
 
 /* Cards: match About.jsx .card sections and add entrance animation */
 main.about .card {
+  max-width: min(var(--content-width), 100%);
+  margin: 0 auto 1.25rem;
   background: rgba(255, 107, 122, 0.04);
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
   border-radius: 12px;
   border: 1px solid rgba(255, 107, 122, 0.08);
-  margin-bottom: 1.25rem;
-  padding: 1.25rem 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   color: #fff;
   opacity: 0;
   transform: translateY(12px);
   animation: fadeInUp 0.6s ease forwards;
 }
+
 /* Stagger the cards for nicer feel */
 main.about .card:nth-of-type(1){ animation-delay: 0.05s }
 main.about .card:nth-of-type(2){ animation-delay: 0.15s }
 main.about .card:nth-of-type(3){ animation-delay: 0.25s }
 
 /* Heading styles */
-main.about h1#about { text-align:center; color:var(--accent); margin-bottom:1rem; font-family: "Playfair Display", serif; font-weight:700; font-size:2.4rem; text-shadow: 0 0 12px rgba(255, 107, 122, 0.12); }
+main.about h1#about { text-align:center; color:var(--accent); margin-bottom:1rem; font-family: "Playfair Display", serif; font-weight:700; font-size:clamp(2rem, 6vw, 2.6rem); text-shadow: 0 0 12px rgba(255, 107, 122, 0.12); }
 main.about h2 { color: var(--accent); margin-bottom:0.75rem; font-family: "Playfair Display", serif; font-weight:700 }
 
 @keyframes fadeInUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
 
 @media (max-width:768px){
-  .container{ padding:1rem 1.5rem }
-  main.about h1#about{ font-size:2rem; margin-bottom:1rem }
   .gallery-grid{ gap:8px }
   .gallery-thumb img{ border-radius:6px }
 }
 
 @media (max-width:480px){
-  .container{ padding:1rem }
-  main.about h1#about{ font-size:1.6rem; margin-bottom:0.75rem }
   .gallery-grid{ grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) }
   .gallery-thumb{ min-height: 100px }
   .lightbox-prev, .lightbox-next{ padding:8px 12px; font-size:1.2rem }
@@ -64,19 +60,18 @@ main.about h2 { color: var(--accent); margin-bottom:0.75rem; font-family: "Playf
 
 /* Skills: match About.jsx structure */
 .skills { display:block }
-.skill { display:flex; align-items:center; gap:1rem; margin-bottom:0.75rem }
-.skill-title { width:120px; font-weight:700; color:#fff }
+.skill { display:grid; grid-template-columns:minmax(0, 120px) minmax(0, 1fr); align-items:center; gap:1rem; margin-bottom:0.75rem }
+.skill-title { width:auto; font-weight:700; color:#fff }
 .skill-bar { flex:1; background: rgba(255,255,255,0.04); border-radius:999px; padding:6px; height:14px; display:flex; align-items:center }
 .skill-bar-fill { width:0; height:100%; border-radius:999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 1s cubic-bezier(0.2,0.9,0.2,1); }
 
 /* When JS sets inline width to data-percent, transition animates it */
 
 .stat { background: var(--card-weak-bg); padding:1.25rem 1rem; border-radius:16px; border: 2px solid rgba(255, 107, 122, 0.2); font-weight:700; color: var(--accent); }
-.gallery-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); gap:0.6rem }
+.gallery-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap:0.75rem }
 
 /* Gallery */
-.gallery-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:12px }
-.gallery-thumb { background: transparent; border: none; padding:0; cursor: pointer; border-radius:8px; overflow:hidden; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); border: 2px solid rgba(255, 107, 122, 0.2); }
+.gallery-thumb { aspect-ratio:1 / 1; background: transparent; border: none; padding:0; cursor: pointer; border-radius:8px; overflow:hidden; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); border: 2px solid rgba(255, 107, 122, 0.2); }
 .gallery-thumb:hover { transform: translateY(-6px); box-shadow: 0 0 20px rgba(255, 107, 122, 0.4); border-color: var(--accent); }
 .gallery-thumb img { width:100%; height:100%; object-fit:cover; display:block; border-radius:8px; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1) }
 .gallery-thumb:hover img { transform: scale(1.08) }
@@ -92,6 +87,8 @@ main.about h2 { color: var(--accent); margin-bottom:0.75rem; font-family: "Playf
 .lightbox-prev { left:18px; top:50%; transform:translateY(-50%) }
 .lightbox-next { right:18px; top:50%; transform:translateY(-50%) }
 
-@media (max-width:600px){ .lightbox-prev, .lightbox-next { display:none } }
+@media (max-width:700px){
+  .skill { grid-template-columns:1fr; gap:0.5rem }
+}
 
-@media (max-width:700px){ .container{padding:1rem 2rem} main.about h1#about{font-size:2rem} }
+@media (max-width:600px){ .lightbox-prev, .lightbox-next { display:none } }

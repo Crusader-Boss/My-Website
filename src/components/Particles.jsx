@@ -1,19 +1,20 @@
 import React, { useRef, useEffect } from 'react'
 
-// Canvas-based particle network (lightweight)
+// Canvas-based particle network tuned down on smaller screens.
 export default function Particles({ count = 60, mode = 'network', color = 'rgba(25,118,210,0.9)', lineColor = 'rgba(25,118,210,0.12)' }){
   const canvasRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+
     const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
     let dpr = window.devicePixelRatio || 1
     let width = 0
     let height = 0
     let animationId = null
-    let time = 0
 
     function resize(){
       dpr = window.devicePixelRatio || 1
@@ -24,11 +25,16 @@ export default function Particles({ count = 60, mode = 'network', color = 'rgba(
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
 
-    // init particles
     const particles = []
+
     function initParticles(){
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const screenFactor = width <= 480 ? 0.35 : width <= 768 ? 0.55 : width <= 1024 ? 0.75 : 1
+      const motionFactor = prefersReducedMotion ? 0.45 : 1
+      const particleCount = Math.max(12, Math.round(count * screenFactor * motionFactor))
+
       particles.length = 0
-      for (let i = 0; i < count; i++){
+      for (let i = 0; i < particleCount; i++){
         if (mode === 'balloon'){
           particles.push({
             x: Math.random() * width,
@@ -61,18 +67,16 @@ export default function Particles({ count = 60, mode = 'network', color = 'rgba(
 
     function step(){
       ctx.clearRect(0,0,width,height)
-      time += 1
-      
-      // move and draw
+
       for (let i = 0; i < particles.length; i++){
         const p = particles[i]
-        
+
         if (mode === 'balloon'){
           p.y += p.vy
           p.wobblePhase += 0.02
           p.vx = Math.sin(p.wobblePhase) * 0.1
           p.x += p.vx
-          
+
           if (p.x < -10) p.x = width + 10
           if (p.x > width + 10) p.x = -10
           if (p.y < -50) {
@@ -80,20 +84,15 @@ export default function Particles({ count = 60, mode = 'network', color = 'rgba(
             p.wobblePhase = Math.random() * Math.PI * 2
           }
         } else if (mode === 'bounce'){
-          // apply gravity
           p.vy += p.gravity
-          
-          // move
           p.x += p.vx
           p.y += p.vy
-          
-          // bounce off walls
+
           if (p.x - p.r < 0) { p.x = p.r; p.vx *= -0.9 }
           if (p.x + p.r > width) { p.x = width - p.r; p.vx *= -0.9 }
           if (p.y - p.r < 0) { p.y = p.r; p.vy *= -0.9 }
           if (p.y + p.r > height) { p.y = height - p.r; p.vy *= -0.9 }
-          
-          // friction/drag
+
           p.vx *= 0.995
           p.vy *= 0.995
         } else {
@@ -112,15 +111,15 @@ export default function Particles({ count = 60, mode = 'network', color = 'rgba(
         ctx.fill()
       }
 
-
+      const linkDistance = width <= 640 ? 72 : 110
       for (let i = 0; i < particles.length; i++){
         for (let j = i + 1; j < particles.length; j++){
           const a = particles[i]
           const b = particles[j]
           const dx = a.x - b.x
           const dy = a.y - b.y
-          const dist = Math.sqrt(dx*dx + dy*dy)
-          if (dist < 110){
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < linkDistance){
             ctx.beginPath()
             ctx.strokeStyle = lineColor
             ctx.globalAlpha = 1 - dist / 140
@@ -154,7 +153,6 @@ export default function Particles({ count = 60, mode = 'network', color = 'rgba(
       if (animationId) cancelAnimationFrame(animationId)
     }
   }, [count, mode, color, lineColor])
-
 
   return (
     <div className="canvas-particles" style={{position:'absolute', inset:0, pointerEvents:'none', zIndex:-1}}>

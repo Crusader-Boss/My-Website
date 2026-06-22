@@ -19,21 +19,26 @@ export default function Blog(){
 
   const posts = useMemo(() => {
     if (!q) return SAMPLE_POSTS
-    return SAMPLE_POSTS.filter(p => (p.title + ' ' + p.excerpt).toLowerCase().includes(q))
+    return SAMPLE_POSTS.filter((post) => (post.title + ' ' + post.excerpt).toLowerCase().includes(q))
   }, [q])
 
   return (
-    <section className="container">
-      <h1>Articles</h1>
-      <p className="blog-intro">These are just sample entries for now — I’m building my own blog platform and more real posts are coming soon.</p>
-      {q && <p>Showing results for "{q}"</p>}
-      {posts.length === 0 && <p>No posts found. More articles are coming soon.</p>}
-      {posts.map(p => (
-        <article key={p.id} className="post">
-          <h3>{p.title}</h3>
-          <p>{p.excerpt}</p>
-        </article>
-      ))}
-    </section>
+    <main className="blog-page">
+      <section className="blog-shell">
+        <div className="blog-header">
+          <h1>Articles</h1>
+          <p className="blog-intro">These are just sample entries for now — I’m building my own blog platform and more real posts are coming soon.</p>
+          {q && <p className="blog-status">Showing results for "{q}"</p>}
+          {posts.length === 0 && <p className="blog-status">No posts found. More articles are coming soon.</p>}
+        </div>
+
+        {posts.map((post) => (
+          <article key={post.id} className="blog-post">
+            <h2>{post.title}</h2>
+            <p>{post.excerpt}</p>
+          </article>
+        ))}
+      </section>
+    </main>
   )
 }

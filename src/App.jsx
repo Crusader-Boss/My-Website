@@ -10,14 +10,14 @@ export default function App() {
   return (
     <>
       <Header />
-      <main>
+      <div className="app-shell">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about_me" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-      </main>
+      </div>
     </>
   )
 }
