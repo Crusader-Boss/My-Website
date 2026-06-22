@@ -33,7 +33,7 @@ export default function Home(){
 
         <aside className="hero-right">
           <div className="profile-card card card-animate">
-            <img src="/images/pfp.webp" alt="Kshitij Arya" className="profile-photo" onError={(e)=>{e.currentTarget.style.display='none'}} />
+            <img src="/images/pfp.jpeg" alt="Kshitij Arya" className="profile-photo" onError={(e)=>{e.currentTarget.style.display='none'}} />
             <p className="profile-caption">Maker • Coder • Researcher</p>
           </div>
         </aside>

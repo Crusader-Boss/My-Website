@@ -39,10 +39,24 @@ export default function Contact(){
   return (
     <main className="contact-page">
       <Particles count={40} mode="bounce" color={'rgba(25,118,210,0.25)'} lineColor={'rgba(25,118,210,0.08)'} />
+      <div className="contact-atmosphere" aria-hidden>
+        <div className="contact-texture contact-texture-grid" />
+        <div className="contact-texture contact-texture-grain" />
+        <div className="contact-orb contact-orb-one" />
+        <div className="contact-orb contact-orb-two" />
+        <div className="contact-orb contact-orb-three" />
+        <div className="contact-ribbon contact-ribbon-one" />
+        <div className="contact-ribbon contact-ribbon-two" />
+      </div>
       <div className="box centered">
         <h1 className="contact-title">Contact Me</h1>
         <p className="contact-copy">Interested in biotech, embedded systems, robotics, or a blog collaboration? Drop a line and I’ll respond as soon as I can.</p>
-        <Doodles />
+        <Doodles
+          items={[
+            { left: '75%', top: '68%', size: 44, color: 'rgba(33, 191, 166, 0.12)', delay: '0.6s' },
+            { left: '18%', top: '76%', size: 30, color: 'rgba(255, 93, 143, 0.1)', delay: '0.9s' }
+          ]}
+        />
         <form className="form" onSubmit={onSubmit} noValidate>
           <div className={`form-group ${status === 'error' ? 'error' : ''}`}>
             <label htmlFor="name">Your Name</label>

@@ -1,39 +1,253 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
+body {
+  background-color: #fff4d8;
+  color:var(--text);
+  font-family:Inter, sans-serif;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 149, 107, 0.34) 0%, transparent 24%),
+    radial-gradient(circle at 82% 16%, rgba(33, 191, 166, 0.2) 0%, transparent 20%),
+    radial-gradient(circle at 72% 80%, rgba(255, 214, 94, 0.24) 0%, transparent 22%),
+    linear-gradient(160deg, #fff8e7 0%, #ffe8d2 48%, #fff3c8 100%);
+  background-attachment: fixed;
+}
 
-body { background-color: #1a1410; color:#ffffff; font-family:Inter, sans-serif; background: linear-gradient(135deg, #1a1410 0%, #2a2015 25%, #1f1612 50%, #2d1f18 75%, #1a1410 100%);
-background-attachment: fixed;
-background-image:
-  radial-gradient(circle at 15% 60%, rgba(255, 107, 122, 0.15) 0%, transparent 50%),
-  radial-gradient(circle at 85% 40%, rgba(255, 184, 77, 0.08) 0%, transparent 50%),
-  radial-gradient(circle at 50% 80%, rgba(255, 159, 90, 0.1) 0%, transparent 50%),
-  linear-gradient(135deg, #1a1410 0%, #2a2015 25%, #1f1612 50%, #2d1f18 75%, #1a1410 100%);
-background-size: 100% 100%, 150% 150%, 180% 180%, 100% 100%; }
+.contact-page {
+  position:relative;
+  width:100%;
+  min-height: calc(100vh - var(--header-offset));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: clamp(1rem, 4vw, 2rem) var(--page-gutter) 2.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  isolation: isolate;
+}
 
-.contact-page { position:relative; width:100%; min-height: calc(100vh - var(--header-offset)); display:flex; align-items:center; justify-content:center; padding: clamp(1rem, 4vw, 2rem) var(--page-gutter) 2.5rem; box-sizing: border-box }
-.box { background: rgba(255, 107, 122, 0.08); padding:clamp(1.25rem, 4vw, 2.25rem) clamp(1rem, 3vw, 1.75rem); border-radius:16px; width:min(100%, 560px); border:2px solid rgba(255, 107, 122, 0.3); box-shadow: 0 0 30px rgba(255, 107, 122, 0.1); }
-.contact-title { text-align:center; color:var(--accent); font-family:"Playfair Display", serif; font-weight:900; font-size: 2.2rem; text-shadow: 0 0 20px rgba(255, 107, 122, 0.2); }
-.contact-copy { margin: 0 auto 1.5rem; max-width: 32rem; text-align: center; color: rgba(255,255,255,0.88); line-height: 1.7; }
+.contact-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.contact-texture,
+.contact-orb,
+.contact-ribbon {
+  position: absolute;
+}
+
+.contact-texture-grid {
+  inset: 0;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), transparent 84%);
+  animation: gridDrift 24s linear infinite;
+}
+
+.contact-texture-grain {
+  inset: -10%;
+  opacity: 0.18;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.65) 0 1px, transparent 1.2px),
+    radial-gradient(circle at 72% 36%, rgba(255, 93, 143, 0.18) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 38% 78%, rgba(33, 191, 166, 0.2) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 64% 70%, rgba(255, 159, 28, 0.2) 0 1px, transparent 1.3px);
+  background-size: 28px 28px, 34px 34px, 30px 30px, 36px 36px;
+  animation: grainShift 18s ease-in-out infinite alternate;
+}
+
+.contact-orb {
+  border-radius: 999px;
+  filter: blur(10px);
+  opacity: 0.58;
+  mix-blend-mode: multiply;
+}
+
+.contact-orb-one {
+  width: 260px;
+  height: 260px;
+  top: 8%;
+  left: -3%;
+  background: radial-gradient(circle, rgba(255, 146, 120, 0.72), rgba(255, 146, 120, 0));
+  animation: driftBlobOne 14s ease-in-out infinite;
+}
+
+.contact-orb-two {
+  width: 320px;
+  height: 320px;
+  right: -6%;
+  top: 14%;
+  background: radial-gradient(circle, rgba(33, 191, 166, 0.4), rgba(33, 191, 166, 0));
+  animation: driftBlobTwo 18s ease-in-out infinite;
+}
+
+.contact-orb-three {
+  width: 280px;
+  height: 280px;
+  bottom: -6%;
+  left: 48%;
+  background: radial-gradient(circle, rgba(255, 212, 94, 0.5), rgba(255, 212, 94, 0));
+  animation: driftBlobThree 16s ease-in-out infinite;
+}
+
+.contact-ribbon {
+  border-radius: 999px;
+  opacity: 0.42;
+  filter: blur(0.2px);
+}
+
+.contact-ribbon-one {
+  width: 440px;
+  height: 84px;
+  top: 18%;
+  right: -8%;
+  background: linear-gradient(90deg, rgba(33, 191, 166, 0), rgba(33, 191, 166, 0.24), rgba(255, 255, 255, 0));
+  transform: rotate(-18deg);
+  animation: ribbonSwayOne 17s ease-in-out infinite;
+}
+
+.contact-ribbon-two {
+  width: 360px;
+  height: 70px;
+  bottom: 12%;
+  left: -8%;
+  background: linear-gradient(90deg, rgba(255, 93, 143, 0), rgba(255, 93, 143, 0.18), rgba(255, 255, 255, 0));
+  transform: rotate(18deg);
+  animation: ribbonSwayTwo 15s ease-in-out infinite;
+}
+
+.box {
+  position: relative;
+  z-index: 1;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.72), rgba(255,250,244,0.92) 46%, rgba(235,255,250,0.72)),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0 12px, rgba(255, 255, 255, 0.02) 12px 24px);
+  padding:clamp(1.25rem, 4vw, 2.25rem) clamp(1rem, 3vw, 1.75rem);
+  border-radius:28px;
+  width:min(100%, 560px);
+  border:1px solid rgba(255, 93, 143, 0.16);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 159, 28, 0.18), transparent 18%),
+    radial-gradient(circle at 84% 18%, rgba(33, 191, 166, 0.16), transparent 22%),
+    radial-gradient(circle at 68% 82%, rgba(255, 93, 143, 0.12), transparent 20%);
+  opacity: 0.9;
+  animation: boxGlowShift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.contact-title {
+  text-align:center;
+  color:var(--accent);
+  font-family:"Playfair Display", serif;
+  font-weight:900;
+  font-size: 2.2rem;
+  text-shadow: 0 10px 20px rgba(255, 93, 143, 0.12);
+}
+
+.contact-copy {
+  margin: 0 auto 1.5rem;
+  max-width: 32rem;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .form { display:flex; flex-direction:column; gap:1rem }
 .form-group { display:flex; flex-direction:column; gap:0.45rem }
-.fname, .femail, .fmessage { width:100%; padding:12px 16px; border:2px solid var(--accent-2); border-radius:10px; background: rgba(255, 184, 77, 0.05); transition: all 0.3s ease; font-size: 16px; min-height: 44px; color: #ffffff; font-weight:600; }
-.fname:focus, .femail:focus, .fmessage:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(255, 107, 122, 0.2); transform: scale(1.02); background: rgba(255, 107, 122, 0.05); }
+
+.fname, .femail, .fmessage {
+  width:100%;
+  padding:12px 16px;
+  border:1px solid rgba(255, 159, 28, 0.2);
+  border-radius:14px;
+  background: rgba(255, 255, 255, 0.84);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  min-height: 44px;
+  color: var(--text);
+  font-weight:600;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 8px 18px rgba(255, 169, 102, 0.08);
+}
+
+.fname::placeholder, .femail::placeholder, .fmessage::placeholder { color: rgba(110, 92, 121, 0.72); }
+
+.fname:focus, .femail:focus, .fmessage:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 4px rgba(255, 93, 143, 0.14),
+    0 12px 24px rgba(255, 93, 143, 0.1);
+  transform: scale(1.01);
+  background: rgba(255, 255, 255, 0.96);
+}
+
 .fmessage { min-height: 144px; resize: vertical; }
 
-.form-group label { transition: all 0.2s ease; font-size: 0.95rem; font-weight:600; color: var(--accent-2); }
+.form-group label { transition: all 0.2s ease; font-size: 0.95rem; font-weight:700; color: var(--accent); }
 
-.submitbtn { padding:14px 28px; border-radius:10px; background: linear-gradient(135deg,#FF6B7A,#FFB84D); color:#000000; border:none; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); font-weight: 700; cursor: pointer; position: relative; overflow: hidden; min-height: 48px; font-size: 1.1rem; box-shadow: 0 8px 20px rgba(255, 107, 122, 0.3); }
-.submitbtn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s }
-.submitbtn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255, 107, 122, 0.5); }
+.submitbtn {
+  padding:14px 28px;
+  border-radius:14px;
+  background: linear-gradient(110deg,var(--accent),var(--accent-2));
+  color:#fffdf8;
+  border:none;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+  font-size: 1.05rem;
+  box-shadow: 0 14px 28px rgba(255, 93, 143, 0.24);
+}
+
+.submitbtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.submitbtn:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(255, 93, 143, 0.28); }
 .submitbtn:hover::before { left: 100% }
 .submitbtn:active { transform: translateY(-1px) }
 
-.box.centered { position:relative; margin: 0 auto; isolation: isolate }
+.box.centered { margin: 0 auto; isolation: isolate }
 
 /* doodles */
 .doodles-wrap { position:absolute; inset:0; pointer-events:none; z-index:0 }
-.doodle { position:absolute; transform-origin:center; opacity:0.95; animation: floatY 6s ease-in-out infinite }
-@keyframes floatY { 0%{ transform: translateY(0) } 50%{ transform: translateY(-12px) } 100%{ transform: translateY(0) } }
+.doodle { position:absolute; transform-origin:center; opacity:0.55; animation: floatY 6s ease-in-out infinite }
+@keyframes floatY { 0%{ transform: translateY(0) scale(1) } 50%{ transform: translateY(-12px) scale(1.05) } 100%{ transform: translateY(0) scale(1) } }
 
 /* ensure the form sits above doodles */
 .box.centered .form, .box.centered .contact-title, .box.centered .contact-copy { position:relative; z-index:2 }
@@ -41,14 +255,61 @@ background-size: 100% 100%, 150% 150%, 180% 180%, 100% 100%; }
 /* remove old bubble container usage */
 .bubbles { display:none }
 
+@keyframes gridDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(18px, 12px, 0); }
+}
+
+@keyframes grainShift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-1.5%, 1.5%, 0) scale(1.03); }
+  100% { transform: translate3d(1%, -1%, 0) scale(1.01); }
+}
+
+@keyframes driftBlobOne {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(50px, 34px, 0) scale(1.1); }
+}
+
+@keyframes driftBlobTwo {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-44px, 42px, 0) scale(1.08); }
+}
+
+@keyframes driftBlobThree {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-36px, -26px, 0) scale(1.12); }
+}
+
+@keyframes ribbonSwayOne {
+  0%, 100% { transform: rotate(-18deg) translate3d(0, 0, 0); }
+  50% { transform: rotate(-13deg) translate3d(-28px, 18px, 0); }
+}
+
+@keyframes ribbonSwayTwo {
+  0%, 100% { transform: rotate(18deg) translate3d(0, 0, 0); }
+  50% { transform: rotate(23deg) translate3d(24px, -12px, 0); }
+}
+
+@keyframes boxGlowShift {
+  from { transform: translate3d(0, 0, 0) scale(1); opacity: 0.82; }
+  to { transform: translate3d(8px, -10px, 0) scale(1.04); opacity: 1; }
+}
+
 @media (max-width:768px){
   .contact-title{ font-size:1.8rem }
   .fname, .femail, .fmessage{ padding:12px 14px }
+  .contact-orb-one { width: 220px; height: 220px; }
+  .contact-orb-two { width: 240px; height: 240px; }
 }
 
 @media (max-width:480px){
   .contact-title{ font-size:1.3rem }
   .doodle{ display:none }
+  .contact-ribbon { display: none; }
+  .contact-orb-one,
+  .contact-orb-two,
+  .contact-orb-three { filter: blur(14px); opacity: 0.44; }
   .fname, .femail, .fmessage{ padding:10px 12px; font-size: 16px }
   .submitbtn{ width: 100%; padding: 0.75rem }
 }
